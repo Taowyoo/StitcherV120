@@ -23,7 +23,7 @@
       <item row="0" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="setInputButton">
           <property name="text">
            <string>PushButton</string>
           </property>
@@ -46,7 +46,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="clearInputButton">
           <property name="text">
            <string>PushButton</string>
           </property>
@@ -57,7 +57,7 @@
       <item row="0" column="2">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QPushButton" name="pushButton_3">
+         <widget class="QPushButton" name="setOutputButton">
           <property name="text">
            <string>PushButton</string>
           </property>
@@ -80,7 +80,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_4">
+         <widget class="QPushButton" name="clearOutputButton">
           <property name="text">
            <string>PushButton</string>
           </property>
@@ -88,25 +88,22 @@
         </item>
        </layout>
       </item>
-      <item row="1" column="2">
-       <widget class="QTableWidget" name="tableWidget"/>
-      </item>
       <item row="3" column="0">
-       <widget class="QPushButton" name="pushButton_7">
+       <widget class="QPushButton" name="stopButton">
         <property name="text">
          <string>PushButton</string>
         </property>
        </widget>
       </item>
       <item row="3" column="2">
-       <widget class="QPushButton" name="pushButton_8">
+       <widget class="QPushButton" name="locationButton">
         <property name="text">
          <string>PushButton</string>
         </property>
        </widget>
       </item>
       <item row="2" column="2">
-       <widget class="QPushButton" name="pushButton_6">
+       <widget class="QPushButton" name="openButton">
         <property name="text">
          <string>PushButton</string>
         </property>
@@ -129,14 +126,17 @@
        </spacer>
       </item>
       <item row="2" column="0">
-       <widget class="QPushButton" name="pushButton_5">
+       <widget class="QPushButton" name="startButton">
         <property name="text">
          <string>PushButton</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QTableView" name="tableView"/>
+       <widget class="QTableView" name="inputtableView"/>
+      </item>
+      <item row="1" column="2">
+       <widget class="QTableView" name="outputtableView"/>
       </item>
      </layout>
     </item>
