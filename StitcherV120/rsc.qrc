@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>icon/export_128px_1128285_easyicon.net.ico</file>
+        <file>icon/import_128px_1128289_easyicon.net.ico</file>
+        <file>icon/information_128px_1128290_easyicon.net.ico</file>
+        <file>icon/open_file_128px_1187339_easyicon.net.ico</file>
+        <file>icon/Open_folder_search_128px_1186196_easyicon.net.ico</file>
+        <file>icon/setting_128px_1129026_easyicon.net.ico</file>
+    </qresource>
+</RCC>

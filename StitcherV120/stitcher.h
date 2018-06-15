@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QVector>
+#include <QProcess>
 class stitcher : public QObject
 {
     Q_OBJECT
@@ -20,18 +21,21 @@ public:
 
     void setImagesName(const QStringList &value);
 
-    void setCurrentStitcher(int type);
 
     void setArgumentsStr(const QString &value);
 
-    void setResultName(const QString &value);
+
+
+    void setFinalImageName(const QString &value);
 
 private:
+    QProcess *p;
     QString stitcher3Name;
     QString stitcher6Name;
     QString currentStitcher;
     int stitcherType;
-    QString resultName;
+    //QString resultName;
+    QString finalImageName;
     QString argumentsStr;
     QStringList imagesName;
     QStringList tempName;

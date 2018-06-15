@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->progressBar->hide();
     mySetting = new setting(this);
     myStitcher = new stitcher(this);
     setWindowTitle(tr("Image Stitcher"));
@@ -28,13 +29,18 @@ MainWindow::MainWindow(QWidget *parent) :
     QAction *exitAction = new QAction(tr("Exit"),this);
     QAction *aboutAction = new QAction(tr("About"),this);
     QAction *settingAction = new QAction(tr("Setting"),this);
-
+    openResultAction->setIcon(QIcon(":/icon/icon/open_file_128px_1187339_easyicon.net.ico"));
+    openLocationAction->setIcon(QIcon(":/icon/icon/Open_folder_search_128px_1186196_easyicon.net.ico"));
+    setInputAction->setIcon(QIcon(":/icon/icon/import_128px_1128289_easyicon.net.ico"));
+    setOutputAction->setIcon(QIcon(":/icon/icon/export_128px_1128285_easyicon.net.ico"));
+    aboutAction->setIcon(QIcon(":/icon/icon/information_128px_1128290_easyicon.net.ico"));
+    settingAction->setIcon(QIcon(":/icon/icon/setting_128px_1129026_easyicon.net.ico"));
     connect(openResultAction,SIGNAL(triggered(bool)),this,SLOT(on_openButton_clicked()));
     connect(openLocationAction,SIGNAL(triggered(bool)),this,SLOT(on_locationButton_clicked()));
     connect(setInputAction,SIGNAL(triggered(bool)),this,SLOT(on_setInputButton_clicked()));
     connect(setOutputAction,SIGNAL(triggered(bool)),this,SLOT(on_setOutputButton_clicked()));
     connect(exitAction,SIGNAL(triggered(bool)),this,SLOT(close()));
-    //connect(aboutAction,SIGNAL(triggered(bool)),this,SLOT(close()));
+    connect(aboutAction,SIGNAL(triggered(bool)),this,SLOT(about()));
     connect(settingAction,SIGNAL(triggered(bool)),this,SLOT(on_setting_clicked()));
 
     QMenu *fileMenu = new QMenu(tr("File"),this);
@@ -149,11 +155,15 @@ void MainWindow::on_clearOutputButton_clicked()
 
 void MainWindow::on_startButton_clicked()
 {
+    qDebug() <<mySetting->getArgumentStr();
     myStitcher->setArgumentsStr(mySetting->getArgumentStr());
+
     myStitcher->setImagesName(inputImages);
-    myStitcher->setStitcher3Name("Stitcher");
-    myStitcher->setCurrentStitcher(0);
-    myStitcher->setResultName(outputImage);
+    myStitcher->setStitcher3Name(mySetting->getStitcher3());
+    myStitcher->setStitcher6Name(mySetting->getStitcher6());
+    myStitcher->setStitcherType(mySetting->getStitcherType());
+
+    myStitcher->setFinalImageName(outputImage);
     myStitcher->run();
 }
 
@@ -192,4 +202,14 @@ void MainWindow::on_locationButton_clicked()
 void MainWindow::on_setting_clicked()
 {
     mySetting->show();
+}
+
+void MainWindow::about()
+{
+    QMessageBox mesg;
+    mesg.setWindowIcon(QIcon(":/icon/icon/information_128px_1128290_easyicon.net.ico"));
+    mesg.setIcon(QMessageBox::NoIcon);
+    mesg.setText("Program Intruduction: A program to stitch normal or multispectral images\nAuthor: Yuxiang Cao\nVersion: V120\nEmail: caoyxsh@outlook.com");
+    mesg.exec();
+    return;
 }

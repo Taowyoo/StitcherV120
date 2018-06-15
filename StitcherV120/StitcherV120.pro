@@ -37,3 +37,10 @@ HEADERS += \
 FORMS += \
         mainwindow.ui \
     setting.ui
+
+RESOURCES += \
+    rsc.qrc
+
+DISTFILES += \
+    exeicon.rc
+RC_FILE += exeicon.rc

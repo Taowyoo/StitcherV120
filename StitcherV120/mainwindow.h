@@ -35,6 +35,7 @@ private slots:
     void on_locationButton_clicked();
 
     void on_setting_clicked();
+    void about();
 private:
     Ui::MainWindow *ui;
     setting *mySetting;

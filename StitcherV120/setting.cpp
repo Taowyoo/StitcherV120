@@ -1,11 +1,24 @@
 ﻿#include "setting.h"
 #include "ui_setting.h"
 #include <QDebug>
+#include <QFileDialog>
 setting::setting(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::setting)
 {
     ui->setupUi(this);
+    setWindowIcon(QIcon(":/icon/icon/setting_128px_1129026_easyicon.net.ico"));
+    stitcher3 = "Stitcher";
+    stitcher6 = "Stitcher";
+
+    ui->rotationGroupBox->setTitle(tr("Rotation Flags"));
+    ui->compositeGroupBox->setTitle(tr("Composition Flags"));
+
+    ui->stitcher3label->setText(tr("Normal Stitcher Path"));
+    ui->stitcher6label->setText(tr("Multispectral Stitcher Path"));
+
+    ui->stitcher3pushButton->setText(tr("Set Path"));
+    ui->stitcher6pushButton->setText(tr("Set Path"));
 
     ui->work_megapix_label->setText(tr("Work Megapix"));
     ui->features_label->setText(tr("Features Type"));
@@ -24,8 +37,13 @@ setting::setting(QWidget *parent) :
     ui->blend_label->setText(tr("Blend Type"));
     ui->blend_strength_label->setText(tr("Blend Strength"));
 
+    ui->currentStitcherlabel->setText(tr("Current Stitcher"));
+    QStringList stitcherType;
+    stitcherType<<"Nromal"<<"Multispectral";
+    ui->currentStitchercomboBox->insertItems(0,stitcherType);
+
     ui->work_megpix_lineEdit->setText(QString().setNum(0.6));
-    arguments.insert("work_megpix","0.6");
+    arguments.insert("work_megapix","0.6");
 
     QStringList features;
     features<<"orb"<<"surf";
@@ -95,6 +113,7 @@ setting::setting(QWidget *parent) :
     ui->applyButton->setText(tr("Apply"));
     ui->okButton->setText(tr("OK"));
     ui->cancelButton->setText(tr("Reset"));
+    updateArguments();
 }
 
 setting::~setting()
@@ -107,7 +126,7 @@ void setting::on_applyButton_clicked()
     this->hide();
 
     arguments.clear();
-    arguments.insert("work_megpix",ui->work_megpix_lineEdit->text());
+    arguments.insert("work_megapix",ui->work_megpix_lineEdit->text());
     arguments.insert("features",ui->features_comboBox->currentText());
     arguments.insert("matcher",ui->matcher_comboBox->currentText());
     arguments.insert("estimator",ui->estimator_comboBox->currentText());
@@ -136,7 +155,7 @@ void setting::on_cancelButton_clicked()
     this->hide();
     arguments.clear();
     ui->work_megpix_lineEdit->setText(QString().setNum(0.6));
-    arguments.insert("work_megpix","0.6");
+    arguments.insert("work_megapix","0.6");
 
 
     ui->features_comboBox->setCurrentIndex(0);
@@ -211,4 +230,36 @@ void setting::updateArguments()
         argumentStr.append(it.value());
     }
     qDebug()<<argumentStr;
+}
+
+void setting::on_stitcher3pushButton_clicked()
+{
+    stitcher3 = QFileDialog::getOpenFileName(this, tr("Set Normal Stitcher Path"),
+                                "./NormalStitcher.exe",
+                                tr("Program (*.exe)"));
+    ui->stitcher3lineEdit->setText(stitcher3);
+}
+
+void setting::on_stitcher6pushButton_clicked()
+{
+    stitcher6 = QFileDialog::getOpenFileName(this, tr("Set Multispectral Stitcher Path"),
+                                "./MultispectralStitcher.exe",
+                                tr("Program (*.exe)"));
+    ui->stitcher6lineEdit->setText(stitcher6);
+
+}
+
+int setting::getStitcherType() const
+{
+    return ui->currentStitchercomboBox->currentIndex();
+}
+
+QString setting::getStitcher6() const
+{
+    return stitcher6;
+}
+
+QString setting::getStitcher3() const
+{
+    return stitcher3;
 }

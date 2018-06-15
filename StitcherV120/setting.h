@@ -17,6 +17,12 @@ public:
 
     QString getArgumentStr() const;
 
+    QString getStitcher3() const;
+
+    QString getStitcher6() const;
+
+    int getStitcherType() const;
+
 private slots:
     void on_applyButton_clicked();
 
@@ -24,13 +30,17 @@ private slots:
 
     void on_cancelButton_clicked();
 
+    void on_stitcher3pushButton_clicked();
 
+    void on_stitcher6pushButton_clicked();
 
 private:
     Ui::setting *ui;
     QMap<QString, QString> arguments;
     QString argumentStr;
-
+    QString stitcher3;
+    QString stitcher6;
+    //int stitcherType;
     void updateArguments();
 
 };
