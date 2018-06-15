@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QStandardItemModel>
+#include <setting.h>
+#include <stitcher.h>
 namespace Ui {
 class MainWindow;
 }
@@ -32,8 +34,11 @@ private slots:
 
     void on_locationButton_clicked();
 
+    void on_setting_clicked();
 private:
     Ui::MainWindow *ui;
+    setting *mySetting;
+    stitcher *myStitcher;
     QStandardItemModel *inputModel;
     QStandardItemModel *outputModel;
     QStringList inputImages;

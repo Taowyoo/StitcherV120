@@ -1,12 +1,16 @@
 ﻿#include "stitcher.h"
-
+#include <QDebug>
 stitcher::stitcher(QObject *parent) : QObject(parent)
 {
-
+    stitcherType = 0;
 }
 
 void stitcher::run()
 {
+    generateCmd();
+    for (int i = 0; i < cmdList.size(); ++i){
+        qDebug() << cmdList[i];
+    }
 
 }
 
@@ -23,11 +27,15 @@ void stitcher::setStitcher6Name(const QString &value)
 void stitcher::setStitcherType(int value)
 {
     stitcherType = value;
-}
-
-void stitcher::setArgument(const QVector<QStringList> &value)
-{
-    argument = value;
+    if(stitcherType == 1){
+    currentStitcher = stitcher6Name;
+    }
+    else if(stitcherType == 0){
+        currentStitcher = stitcher3Name;
+    }
+    else   {
+        currentStitcher = "NULL";
+    }
 }
 
 void stitcher::setImagesName(const QStringList &value)
@@ -38,6 +46,16 @@ void stitcher::setImagesName(const QStringList &value)
 void stitcher::setCurrentStitcher(int type)
 {
     currentStitcher = type;
+}
+
+void stitcher::setArgumentsStr(const QString &value)
+{
+    argumentsStr = value;
+}
+
+void stitcher::setResultName(const QString &value)
+{
+    resultName = value;
 }
 
 void stitcher::generateCmd()
@@ -78,7 +96,9 @@ QString stitcher::getImgNames(QStringList &nameList, int begin, int end)
 {
     QString result;
     for(int i = begin; i< end; ++i){
-        result <<" " << nameList[i];
+        result.append(" ");
+        result.append(nameList[i]);
+
     }
     return result;
 }

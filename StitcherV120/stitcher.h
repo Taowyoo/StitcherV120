@@ -17,18 +17,21 @@ public:
 
     void setStitcherType(int value);
 
-    void setArgument(const QVector<QStringList> &value);
 
     void setImagesName(const QStringList &value);
 
     void setCurrentStitcher(int type);
+
+    void setArgumentsStr(const QString &value);
+
+    void setResultName(const QString &value);
 
 private:
     QString stitcher3Name;
     QString stitcher6Name;
     QString currentStitcher;
     int stitcherType;
-    QVector<QStringList> argument ;
+    QString resultName;
     QString argumentsStr;
     QStringList imagesName;
     QStringList tempName;

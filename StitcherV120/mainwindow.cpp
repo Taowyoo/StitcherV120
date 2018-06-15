@@ -9,6 +9,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    mySetting = new setting(this);
+    myStitcher = new stitcher(this);
     setWindowTitle(tr("Image Stitcher"));
     ui->openButton->setText(tr("Open Result Image"));
     ui->locationButton->setText(tr("Show Result Image in Exploer"));
@@ -33,23 +35,23 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(setOutputAction,SIGNAL(triggered(bool)),this,SLOT(on_setOutputButton_clicked()));
     connect(exitAction,SIGNAL(triggered(bool)),this,SLOT(close()));
     //connect(aboutAction,SIGNAL(triggered(bool)),this,SLOT(close()));
-    //connect(settingAction,SIGNAL(triggered(bool)),this,SLOT(close()));
+    connect(settingAction,SIGNAL(triggered(bool)),this,SLOT(on_setting_clicked()));
 
-    QMenu *file = new QMenu(tr("File"),this);
-    QMenu *setting = new QMenu(tr("Setting"),this);
-    QMenu *about = new QMenu(tr("About"),this);
+    QMenu *fileMenu = new QMenu(tr("File"),this);
+    QMenu *settingMenu = new QMenu(tr("Setting"),this);
+    QMenu *aboutMenu = new QMenu(tr("About"),this);
 
-    file->addAction(setInputAction);
-    file->addAction(setOutputAction);
-    file->addAction(openResultAction);
-    file->addAction(openLocationAction);
-    file->addAction(exitAction);
-    setting->addAction(settingAction);
-    about->addAction(aboutAction);
+    fileMenu->addAction(setInputAction);
+    fileMenu->addAction(setOutputAction);
+    fileMenu->addAction(openResultAction);
+    fileMenu->addAction(openLocationAction);
+    fileMenu->addAction(exitAction);
+    settingMenu->addAction(settingAction);
+    aboutMenu->addAction(aboutAction);
 
-    ui->menuBar->addMenu(file);
-    ui->menuBar->addMenu(setting);
-    ui->menuBar->addMenu(about);
+    ui->menuBar->addMenu(fileMenu);
+    ui->menuBar->addMenu(settingMenu);
+    ui->menuBar->addMenu(aboutMenu);
 
 
     ui->mainToolBar->addAction(setInputAction);
@@ -147,7 +149,12 @@ void MainWindow::on_clearOutputButton_clicked()
 
 void MainWindow::on_startButton_clicked()
 {
-
+    myStitcher->setArgumentsStr(mySetting->getArgumentStr());
+    myStitcher->setImagesName(inputImages);
+    myStitcher->setStitcher3Name("Stitcher");
+    myStitcher->setCurrentStitcher(0);
+    myStitcher->setResultName(outputImage);
+    myStitcher->run();
 }
 
 void MainWindow::on_openButton_clicked()
@@ -180,4 +187,9 @@ void MainWindow::on_locationButton_clicked()
             return;
         }
     QDesktopServices::openUrl(QUrl::fromLocalFile(QFileInfo(outputImage).absolutePath()));
+}
+
+void MainWindow::on_setting_clicked()
+{
+    mySetting->show();
 }
