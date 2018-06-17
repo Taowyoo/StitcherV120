@@ -17,6 +17,11 @@ setting::setting(QWidget *parent) :
     ui->stitcher3label->setText(tr("Normal Stitcher Path"));
     ui->stitcher6label->setText(tr("Multispectral Stitcher Path"));
 
+    ui->stitcher3lineEdit->setText("./cmdProgram/StitcherForRGB.exe");
+    ui->stitcher6lineEdit->setText("./cmdProgram/Stitcher.exe");
+    stitcher3 = "./cmdProgram/StitcherForRGB.exe";
+    stitcher6 = "./cmdProgram/Stitcher.exe";
+
     ui->stitcher3pushButton->setText(tr("Set Path"));
     ui->stitcher6pushButton->setText(tr("Set Path"));
 
