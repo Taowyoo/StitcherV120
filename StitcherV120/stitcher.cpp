@@ -14,9 +14,9 @@ void stitcher::run()
     generateCmd();
 
 
-
+    QFile::remove(".\\cmd.bat");
     QFile file(".\\cmd.bat");
-    file.remove();
+
 
     if(!file.open(QIODevice::ReadWrite | QIODevice::Text)) {
         qDebug()<<"Can't open the file!"<<endl;

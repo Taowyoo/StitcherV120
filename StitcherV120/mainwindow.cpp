@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setOutputButton->setText(tr("Set Output Image"));
     ui->clearInputButton->setText(tr("Clear input images"));
     ui->clearOutputButton->setText(tr("Clear output image"));
-
+    setWindowIcon(QIcon(":/icon/StitcherIcon.ico"));
     QAction *openResultAction = new QAction(tr("Open Result Image"),this);
     QAction *openLocationAction = new QAction(tr("Show Result Image in Exploer"),this);
     QAction *setInputAction = new QAction(tr("Set Input Images"),this);
@@ -99,11 +99,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_setInputButton_clicked()
 {
+    inputImages.clear();
     inputImages = QFileDialog::getOpenFileNames(
                 this,
-                "Select two or more images to stitch",
+                tr("Select two or more images to stitch"),
                 ".",
-                "Images (*.png *.tif *.jpg)");
+                tr("Images (*.png *.tif *.jpg)"));
     qDebug() << inputImages;
 
     for(int i = 0; i < inputImages.size(); ++i)
@@ -133,6 +134,7 @@ void MainWindow::on_clearInputButton_clicked()
 
 void MainWindow::on_setOutputButton_clicked()
 {
+    outputImage.clear();
     outputImage = QFileDialog::getSaveFileName(this, tr("Set output image"),
                                 "./result.tif",
                                 tr("Images (*.png *.tif *.jpg)"));
@@ -209,7 +211,8 @@ void MainWindow::about()
     QMessageBox mesg;
     mesg.setWindowIcon(QIcon(":/icon/icon/information_128px_1128290_easyicon.net.ico"));
     mesg.setIcon(QMessageBox::NoIcon);
-    mesg.setText("Program Intruduction: A program to stitch normal or multispectral images\nAuthor: Yuxiang Cao\nVersion: V120\nEmail: caoyxsh@outlook.com");
+    mesg.setWindowTitle(tr("About"));
+    mesg.setText(tr("Program Intruduction: A program to stitch normal or multispectral images\nAuthor: Yuxiang Cao\nVersion: V120\nEmail: caoyxsh@outlook.com"));
     mesg.exec();
     return;
 }

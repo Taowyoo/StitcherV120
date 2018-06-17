@@ -44,3 +44,4 @@ RESOURCES += \
 DISTFILES += \
     exeicon.rc
 RC_FILE += exeicon.rc
+TRANSLATIONS += stitcher_zh_CN.ts

@@ -234,6 +234,7 @@ void setting::updateArguments()
 
 void setting::on_stitcher3pushButton_clicked()
 {
+    stitcher3.clear();
     stitcher3 = QFileDialog::getOpenFileName(this, tr("Set Normal Stitcher Path"),
                                 "./NormalStitcher.exe",
                                 tr("Program (*.exe)"));
@@ -242,6 +243,7 @@ void setting::on_stitcher3pushButton_clicked()
 
 void setting::on_stitcher6pushButton_clicked()
 {
+    stitcher6.clear();
     stitcher6 = QFileDialog::getOpenFileName(this, tr("Set Multispectral Stitcher Path"),
                                 "./MultispectralStitcher.exe",
                                 tr("Program (*.exe)"));
