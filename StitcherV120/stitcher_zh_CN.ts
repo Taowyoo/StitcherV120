@@ -81,7 +81,7 @@
     <message>
         <location filename="mainwindow.cpp" line="30"/>
         <location filename="mainwindow.cpp" line="48"/>
-        <location filename="mainwindow.cpp" line="214"/>
+        <location filename="mainwindow.cpp" line="242"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
@@ -120,17 +120,26 @@
         <translation>路径</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="105"/>
+        <location filename="mainwindow.cpp" line="119"/>
         <source>Select two or more images to stitch</source>
         <translation>请设置待拼接图像</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="138"/>
-        <source>Set output image</source>
-        <translation>请设置结果图输出位置</translation>
+        <location filename="mainwindow.cpp" line="121"/>
+        <source>TIF (*.tif);JPG (*.jpg);PNG (*.png)</source>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="215"/>
+        <location filename="mainwindow.cpp" line="159"/>
+        <source>Set image to save</source>
+        <translation>请设置拼接结果图存储位置</translation>
+    </message>
+    <message>
+        <source>Set output image</source>
+        <translation type="vanished">请设置结果图输出位置</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="243"/>
         <source>Program Intruduction: A program to stitch normal or multispectral images
 Author: Yuxiang Cao
 Version: V120
@@ -141,10 +150,8 @@ Email: caoyxsh@outlook.com</source>
 Email：caoyxsh@outlook.com</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="107"/>
-        <location filename="mainwindow.cpp" line="140"/>
         <source>Images (*.png *.tif *.jpg)</source>
-        <translation>图像(*.png *.tif *.jpg)</translation>
+        <translation type="vanished">图像(*.png *.tif *.jpg)</translation>
     </message>
 </context>
 <context>
@@ -209,119 +216,119 @@ Email：caoyxsh@outlook.com</translation>
         <translation>多光谱图像拼接器路径</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="20"/>
-        <location filename="setting.cpp" line="21"/>
+        <location filename="setting.cpp" line="25"/>
+        <location filename="setting.cpp" line="26"/>
         <source>Set Path</source>
         <translation>设置路径</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="23"/>
+        <location filename="setting.cpp" line="28"/>
         <source>Work Megapix</source>
         <translation>配准时图像尺寸</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="24"/>
+        <location filename="setting.cpp" line="29"/>
         <source>Features Type</source>
         <translation>特征类型</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="25"/>
+        <location filename="setting.cpp" line="30"/>
         <source>Matcher Type</source>
         <translation>匹配算法类型</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="26"/>
+        <location filename="setting.cpp" line="31"/>
         <source>Estimator Type</source>
         <translation>估计矩阵类型</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="27"/>
+        <location filename="setting.cpp" line="32"/>
         <source>Match confidence</source>
         <translation>匹配参数</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="28"/>
+        <location filename="setting.cpp" line="33"/>
         <source>Confidence of 2 imgs</source>
         <translation>来自同场景置信度</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="29"/>
+        <location filename="setting.cpp" line="34"/>
         <source>BundleAdjustment Type</source>
         <translation>光束平差法方法</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="30"/>
+        <location filename="setting.cpp" line="35"/>
         <source>Wave Correct</source>
         <translation>波形校验方法</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="32"/>
+        <location filename="setting.cpp" line="37"/>
         <source>Warp Surface Type</source>
         <translation>拼接面类型</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="33"/>
+        <location filename="setting.cpp" line="38"/>
         <source>Seam Megapix</source>
         <translation>拼接缝计算时尺寸</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="34"/>
+        <location filename="setting.cpp" line="39"/>
         <source>Seam Type</source>
         <translation>拼接缝计算方法</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="35"/>
+        <location filename="setting.cpp" line="40"/>
         <source>Compose Megapix</source>
         <translation>融合时尺寸</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="36"/>
+        <location filename="setting.cpp" line="41"/>
         <source>Exposure Compensation</source>
         <translation>光照补偿方法</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="37"/>
+        <location filename="setting.cpp" line="42"/>
         <source>Blend Type</source>
         <translation>融合算法</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="38"/>
+        <location filename="setting.cpp" line="43"/>
         <source>Blend Strength</source>
         <translation>融合强度</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="40"/>
+        <location filename="setting.cpp" line="45"/>
         <source>Current Stitcher</source>
         <translation>当前拼接器</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="113"/>
+        <location filename="setting.cpp" line="118"/>
         <source>Apply</source>
         <translation>应用</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="114"/>
+        <location filename="setting.cpp" line="119"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="115"/>
+        <location filename="setting.cpp" line="120"/>
         <source>Reset</source>
         <translation>复位</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="238"/>
+        <location filename="setting.cpp" line="243"/>
         <source>Set Normal Stitcher Path</source>
         <translation>请设置可见光图像拼接器路径</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="240"/>
-        <location filename="setting.cpp" line="249"/>
+        <location filename="setting.cpp" line="245"/>
+        <location filename="setting.cpp" line="254"/>
         <source>Program (*.exe)</source>
         <translation>可执行程序(*.exe)</translation>
     </message>
     <message>
-        <location filename="setting.cpp" line="247"/>
+        <location filename="setting.cpp" line="252"/>
         <source>Set Multispectral Stitcher Path</source>
         <translation>请设置多光谱图像拼接器路径</translation>
     </message>
