@@ -100,11 +100,25 @@ MainWindow::~MainWindow()
 void MainWindow::on_setInputButton_clicked()
 {
     inputImages.clear();
+    //    QStringList filters;
+    //    filters << "TIF (*.tif))"
+    //            << "JPG (*.jpg)"
+    //            << "PNG (*.png)"
+    //            << "Any files (*)";
+
+    //    QFileDialog dialog(this,
+    //                       tr("Select two or more images to stitch"),
+    //                       "."
+    //                       );
+    //    dialog.setNameFilters(filters);
+    //    dialog.exec();
+    //    inputImages = dialog.selectedFiles();
+
     inputImages = QFileDialog::getOpenFileNames(
                 this,
                 tr("Select two or more images to stitch"),
                 ".",
-                tr("Images (*.png *.tif *.jpg)"));
+                tr("TIF (*.tif);JPG (*.jpg);PNG (*.png)"));
     qDebug() << inputImages;
 
     for(int i = 0; i < inputImages.size(); ++i)
@@ -135,9 +149,22 @@ void MainWindow::on_clearInputButton_clicked()
 void MainWindow::on_setOutputButton_clicked()
 {
     outputImage.clear();
-    outputImage = QFileDialog::getSaveFileName(this, tr("Set output image"),
-                                "./result.tif",
-                                tr("Images (*.png *.tif *.jpg)"));
+    QStringList filters;
+    filters << "TIF (*.tif))"
+            << "JPG (*.jpg)"
+            << "PNG (*.png)"
+            << "Any files (*)";
+
+    QFileDialog dialog(this,
+                       tr("Set image to save"),
+                       "."
+                       );
+    dialog.setNameFilters(filters);
+    dialog.setAcceptMode(QFileDialog::AcceptSave);
+    dialog.exec();
+    if(dialog.selectedFiles().isEmpty() == false)
+        outputImage = (dialog.selectedFiles()).at(0);
+    qDebug() << outputImage;
     QFileInfo fileInfo(outputImage);
     QString fname = fileInfo.fileName().left(fileInfo.fileName().indexOf("."));
     outputModel->setItem(0,0,new QStandardItem(fname));
@@ -147,6 +174,7 @@ void MainWindow::on_setOutputButton_clicked()
     //inputModel->item(i,0)->setTextAlignment(Qt::AlignCenter);
     outputModel->setItem(0,1,new QStandardItem(fileInfo.suffix()));
     outputModel->setItem(0,2,new QStandardItem(fileInfo.absoluteFilePath()));
+
 }
 
 void MainWindow::on_clearOutputButton_clicked()
@@ -172,11 +200,11 @@ void MainWindow::on_startButton_clicked()
 void MainWindow::on_openButton_clicked()
 {
     if(outputImage.isEmpty())
-        {
-            QMessageBox mesg;
-            mesg.warning(this,"Warning","Fail to open the Image\nImage path is empty");
-            return;
-        }
+    {
+        QMessageBox mesg;
+        mesg.warning(this,"Warning","Fail to open the Image\nImage path is empty");
+        return;
+    }
     if(! QDesktopServices::openUrl(QUrl::fromLocalFile(QFileInfo(outputImage).absoluteFilePath()))){
         QMessageBox mesg;
         mesg.warning(this,"Warning","Fail to open the Image\nImage doesn't exist!");
@@ -193,11 +221,11 @@ void MainWindow::on_stopButton_clicked()
 void MainWindow::on_locationButton_clicked()
 {
     if(outputImage.isEmpty())
-        {
-            QMessageBox mesg;
-            mesg.warning(this,"Warning","Fail to open the Image\nImage path is empty");
-            return;
-        }
+    {
+        QMessageBox mesg;
+        mesg.warning(this,"Warning","Fail to open the Image\nImage path is empty");
+        return;
+    }
     QDesktopServices::openUrl(QUrl::fromLocalFile(QFileInfo(outputImage).absolutePath()));
 }
 
