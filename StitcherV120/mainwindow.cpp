@@ -118,7 +118,11 @@ void MainWindow::on_setInputButton_clicked()
                 this,
                 tr("Select two or more images to stitch"),
                 ".",
+<<<<<<< HEAD
                 tr("Images (*.tif *.jpg *.png)"));
+=======
+                tr("Images (*.tif *.png *.jpg)"));
+>>>>>>> bc50537ba115ca48aa35a83080c8e44c796d5996
     qDebug() << inputImages;
 
     for(int i = 0; i < inputImages.size(); ++i)
