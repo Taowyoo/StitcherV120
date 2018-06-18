@@ -118,7 +118,7 @@ void MainWindow::on_setInputButton_clicked()
                 this,
                 tr("Select two or more images to stitch"),
                 ".",
-                tr("TIF (*.tif);JPG (*.jpg);PNG (*.png)"));
+                tr("Images (*.tif *.jpg *.png)"));
     qDebug() << inputImages;
 
     for(int i = 0; i < inputImages.size(); ++i)
@@ -157,7 +157,7 @@ void MainWindow::on_setOutputButton_clicked()
 
     QFileDialog dialog(this,
                        tr("Set image to save"),
-                       "."
+                       "./result"
                        );
     dialog.setNameFilters(filters);
     dialog.setAcceptMode(QFileDialog::AcceptSave);
